@@ -1,0 +1,21 @@
+{
+  "css.customData": [
+    ".vscode/css-custom-data.json"
+  ],
+  "eslint.options": {
+    "overrideConfigFile": "./conf/eslint.config.cjs"
+  },
+  "eslint.validate": [
+    "javascript",
+    "svelte"
+  ],
+  "css.lint.unknownAtRules": "ignore",
+  "search.exclude": {
+    "yarn.lock": true
+  },
+  "tailwindCSS.experimental.configFile": "./conf/tailwind.config.cjs",
+  "tailwindCSS.emmetCompletions": true,
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  }
+}

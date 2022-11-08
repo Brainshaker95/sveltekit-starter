@@ -1,0 +1,59 @@
+{
+  "extends": "./.svelte-kit/tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "vite/client",
+      "node",
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+    ],
+    "noEmit": true,
+    "strict": true,
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "$app/*": [
+        ".svelte/dev/runtime/app/*",
+        ".svelte/build/runtime/app/*"
+      ],
+      "$dynamic-types": [
+        ".svelte-kit/types/src/routes/$types"
+      ],
+      "$dynamic-types/*": [
+        ".svelte-kit/types/src/routes/*"
+      ],
+      "$lib": [
+        "src/lib"
+      ],
+      "$lib/*": [
+        "src/lib/*"
+      ],
+      "$scss": [
+        "src/scss"
+      ],
+      "$scss/*": [
+        "src/scss/*"
+      ],
+      "$types": [
+        "src/types"
+      ],
+      "$types/*": [
+        "src/types/*"
+      ]
+    }
+  },
+  "include": [
+    "./conf/*.cjs",
+    "./conf/*.mjs",
+    "./src/**/*.ts",
+    "./src/**/*.d.ts",
+    "./src/**/*.svelte",
+    "./svelte.config.js"
+  ]
+}
