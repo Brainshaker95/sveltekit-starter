@@ -1,11 +1,11 @@
 import path from 'path';
 
+import eslint from '@modyqyw/vite-plugin-eslint';
 import { sveltekit } from '@sveltejs/kit/vite';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import dotenv from 'dotenv';
 import tailwindcss from 'tailwindcss';
-import eslint from 'vite-plugin-eslint';
 import stylelint from 'vite-plugin-stylelint';
 
 dotenv.config();
@@ -32,12 +32,14 @@ const config = {
   plugins: [
     sveltekit(),
     eslint({
+      build: true,
       fix: true,
-      failOnError: !dev,
-      failOnWarning: !dev,
+      emitErrorAsWarning: dev,
+      emitWarningAsError: !dev,
       overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
     }),
     stylelint({
+      build: true,
       fix: true,
       emitErrorAsWarning: dev,
       emitWarningAsError: !dev,

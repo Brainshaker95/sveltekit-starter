@@ -28,7 +28,7 @@
           class="block"
           class:active="{item.path === activeItem?.path}"
           class:p-4="{!vertical}"
-          data-sveltekit-prefetch
+          data-sveltekit-preload-data
           href="{item.path}"
         >
           {item.name}
