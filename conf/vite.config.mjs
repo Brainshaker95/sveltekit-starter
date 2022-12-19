@@ -32,12 +32,14 @@ const config = {
   plugins: [
     sveltekit(),
     eslint({
+      build: true,
       fix: true,
       emitErrorAsWarning: dev,
       emitWarningAsError: !dev,
       overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
     }),
     stylelint({
+      build: true,
       fix: true,
       emitErrorAsWarning: dev,
       emitWarningAsError: !dev,
