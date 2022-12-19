@@ -1,4 +1,6 @@
 .env
+.eslintcache
+.stylelintcache
 .svelte-kit
 build
 node_modules
