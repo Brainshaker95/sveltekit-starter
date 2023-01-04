@@ -26,8 +26,6 @@ module.exports = {
     'airbnb-typescript/base',
   ],
   plugins: [
-    '@typescript-eslint',
-    'import',
     'import-alias',
   ],
   settings: {
