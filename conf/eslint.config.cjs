@@ -123,22 +123,6 @@ module.exports = {
         }],
       },
     ],
-    'import-alias/import-alias': [
-      'error',
-      {
-        relativeDepth: -1,
-        aliases: [{
-          alias: '$lib',
-          matcher: '^lib',
-        }, {
-          alias: '$scss',
-          matcher: '^scss',
-        }, {
-          alias: '$types',
-          matcher: '^types',
-        }],
-      },
-    ],
   },
   overrides: [{
     files: [
@@ -225,6 +209,22 @@ module.exports = {
     ],
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'error',
+      'import-alias/import-alias': [
+        'error',
+        {
+          relativeDepth: -1,
+          aliases: [{
+            alias: '$lib',
+            matcher: '^lib',
+          }, {
+            alias: '$scss',
+            matcher: '^scss',
+          }, {
+            alias: '$types',
+            matcher: '^types',
+          }],
+        },
+      ],
     },
   }, {
     files: [
@@ -232,14 +232,6 @@ module.exports = {
     ],
     rules: {
       '@typescript-eslint/no-var-requires': 'off',
-    },
-  }, {
-    files: [
-      'svelte.config.js',
-      './conf/*',
-    ],
-    rules: {
-      'import-alias/import-alias': 'off',
     },
   }],
 };
