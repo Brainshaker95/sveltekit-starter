@@ -17,8 +17,8 @@ export const objectEntries = <T extends AnyObject<T>>(
   object: T,
 ): ObjectEntries<T> => (<ObjectEntries<T>>Object.entries(object));
 
-export const object = {
+export const object = Object.freeze({
   keys: objectKeys,
   values: objectValues,
   entries: objectEntries,
-};
+});
