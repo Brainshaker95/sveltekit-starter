@@ -18,14 +18,25 @@ const localStore = <T extends Json>(key: string, initial: T): Writable<T> => {
   const data = <T>JSON.parse(localStorage.getItem(key) ?? '{}');
   const { subscribe, set, update } = memoryStore(data);
 
+  const storeLocally = (value: T): void => localStorage.setItem(key, JSON.stringify(value));
+
   return {
     subscribe,
-    set: (value: T): void => {
-      localStorage.setItem(key, JSON.stringify(value));
-
-      return set(value);
+    set: (value): void => {
+      set(value);
+      storeLocally(value);
     },
-    update,
+    update: (updater): void => {
+      let value: T | undefined;
+
+      update((val) => {
+        value = updater(val);
+
+        return value;
+      });
+
+      storeLocally(value ?? initial);
+    },
   };
 };
 

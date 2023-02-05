@@ -16,35 +16,36 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "$app/*": [
-        ".svelte/dev/runtime/app/*",
-        ".svelte/build/runtime/app/*"
+        "./.svelte/dev/runtime/app/*",
+        "./.svelte/build/runtime/app/*"
       ],
       "$dynamic-types": [
-        ".svelte-kit/types/src/routes/$types"
+        "./.svelte-kit/types/src/routes/$types"
       ],
       "$dynamic-types/*": [
-        ".svelte-kit/types/src/routes/*"
+        "./.svelte-kit/types/src/routes/*"
       ],
       "$lib": [
-        "src/lib"
+        "./src/lib"
       ],
       "$lib/*": [
-        "src/lib/*"
+        "./src/lib/*"
       ],
       "$scss": [
-        "src/scss"
+        "./src/scss"
       ],
       "$scss/*": [
-        "src/scss/*"
+        "./src/scss/*"
       ],
       "$types": [
-        "src/types"
+        "./src/types"
       ],
       "$types/*": [
-        "src/types/*"
+        "./src/types/*"
       ]
     }
   },
