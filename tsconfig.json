@@ -2,11 +2,8 @@
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
     "types": [
-      "vite/client",
-      "node",
-    ],
-    "typeRoots": [
-      "node_modules/@types",
+      "bun-types",
+      "node"
     ],
     "noEmit": true,
     "strict": true,
@@ -18,6 +15,9 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+		"moduleResolution": "Bundler",
+    "moduleDetection": "force",
     "paths": {
       "$app/*": [
         "./.svelte/dev/runtime/app/*",

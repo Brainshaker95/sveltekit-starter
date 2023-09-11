@@ -34,9 +34,6 @@ const findBySlug = async (slug: string): Promise<BlogArticle | undefined> => new
 export const load: PageServerLoad<BlogArticle> = async ({ params }) => {
   let blogArticle: BlogArticle | undefined;
 
-  /* This rule disabling should hopefully not be needed in the future */
-  /* eslint-disable @typescript-eslint/no-throw-literal */
-
   try {
     blogArticle = await findBySlug(params.slug);
   } catch {
@@ -46,8 +43,6 @@ export const load: PageServerLoad<BlogArticle> = async ({ params }) => {
   if (!blogArticle) {
     throw error(HTTP.NOT_FOUND, 'Article not found');
   }
-
-  /* eslint-enable @typescript-eslint/no-throw-literal */
 
   return blogArticle;
 };

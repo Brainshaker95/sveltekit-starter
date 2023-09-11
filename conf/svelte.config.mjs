@@ -1,13 +1,13 @@
-import adapter from '@sveltejs/adapter-node';
-import preprocess from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import adapter from 'svelte-adapter-bun';
 
-const dev = process.env.NODE_ENV === 'dev';
+const dev = process.env.ENV === 'dev';
 
 /**
  * @type {import('@sveltejs/kit').Config}
  */
 const config = {
-  preprocess: preprocess(),
+  preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
       precompress: !dev,

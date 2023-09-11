@@ -22,7 +22,7 @@
 
 <nav>
   <ul class="flex" class:flex-col="{vertical}">
-    {#each items as item}
+    {#each items as item (item.path)}
       <li>
         <a
           class="block"
