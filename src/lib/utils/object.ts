@@ -1,9 +1,9 @@
-import type { ValueOf } from '$types/core';
+import type { Simplify, ValueOf } from 'type-fest';
 
-export type AnyObject<T> = Partial<Record<keyof T, ValueOf<T>>>;
-export type ObjectKeys<T> = (keyof T)[];
-export type ObjectValues<T> = ValueOf<T>[];
-export type ObjectEntries<T> = [keyof T, ValueOf<T>][];
+export type AnyObject<T> = Simplify<Partial<Record<keyof T, ValueOf<T>>>>;
+export type ObjectKeys<T> = Simplify<(keyof T)[]>;
+export type ObjectValues<T> = Simplify<ValueOf<T>[]>;
+export type ObjectEntries<T> = Simplify<[keyof T, ValueOf<T>][]>;
 
 export const objectKeys = <T extends AnyObject<T>>(
   object: T,
@@ -17,8 +17,7 @@ export const objectEntries = <T extends AnyObject<T>>(
   object: T,
 ): ObjectEntries<T> => (<ObjectEntries<T>>Object.entries(object));
 
-export const object = Object.freeze({
-  keys: objectKeys,
-  values: objectValues,
-  entries: objectEntries,
-});
+export const objectAssign = <T extends AnyObject<T>>(
+  object: T,
+  source: Partial<T>,
+): T => Object.assign(object, source);

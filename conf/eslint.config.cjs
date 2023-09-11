@@ -1,4 +1,26 @@
 /**
+ * @type {typeof import('../tsconfig.json')}
+ */
+const tsConfig = require('../tsconfig.json');
+
+/**
+ * @type {{
+ *   alias: string;
+ *   matcher: string;
+ * }[]}
+ */
+const aliases = [];
+
+Object.entries(tsConfig.compilerOptions.paths).forEach(([alias, paths]) => {
+  if (alias.startsWith('$') && !alias.endsWith('*') && paths[0]) {
+    aliases.push({
+      alias,
+      matcher: alias.replace('$', '^'),
+    });
+  }
+});
+
+/**
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
@@ -51,6 +73,7 @@ module.exports = {
     'no-invalid-this': 'off',
     '@typescript-eslint/no-invalid-this': 'error',
     '@typescript-eslint/promise-function-async': 'error',
+    'import/no-default-export': 'error',
     'import/prefer-default-export': 'off',
     '@typescript-eslint/consistent-type-assertions': [
       'error',
@@ -62,9 +85,11 @@ module.exports = {
       'error',
       {
         ignore: [
+          -1,
           0,
           1,
-          6969,
+          100,
+          42069,
         ],
       },
     ],
@@ -81,6 +106,7 @@ module.exports = {
       'error',
       {
         code: 120,
+        ignoreUrls: true,
       },
     ],
     'no-param-reassign': [
@@ -133,9 +159,13 @@ module.exports = {
       parser: '@typescript-eslint/parser',
     },
     rules: {
+      /**
+       * @see https://github.com/typescript-eslint/typescript-eslint/blob/1cf9243/docs/getting-started/linting/FAQ.md#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+       */
+      'no-undef': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
-      'import/no-extraneous-dependencies': 'off',
       'import/no-mutable-exports': 'off',
       'import/no-unresolved': 'off',
       indent: 'off',
@@ -203,6 +233,24 @@ module.exports = {
     },
   }, {
     files: [
+      './src/routes/**/*.ts',
+    ],
+    rules: {
+      '@typescript-eslint/no-throw-literal': 'off',
+    },
+  }, {
+    files: [
+      '*.js',
+      '*.cjs',
+      '*.mjs',
+      '*.ts',
+      '*.d.ts',
+    ],
+    parserOptions: {
+      project: './conf/tsconfig.eslint.json',
+    },
+  }, {
+    files: [
       '*.ts',
       '*.d.ts',
       '*.svelte',
@@ -213,24 +261,25 @@ module.exports = {
         'error',
         {
           relativeDepth: -1,
-          aliases: [{
-            alias: '$lib',
-            matcher: '^lib',
-          }, {
-            alias: '$scss',
-            matcher: '^scss',
-          }, {
-            alias: '$types',
-            matcher: '^types',
-          }],
+          aliases,
         },
       ],
+    },
+  }, {
+    files: [
+      'svelte.config.js',
+      './conf/**/*.mjs',
+    ],
+    rules: {
+      'import/no-default-export': 'off',
     },
   }, {
     files: [
       '*.cjs',
     ],
     rules: {
+      'no-console': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-var-requires': 'off',
     },
   }],

@@ -1,49 +1,86 @@
 import path from 'path';
 
-import eslint from '@modyqyw/vite-plugin-eslint';
 import { sveltekit } from '@sveltejs/kit/vite';
 import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
-import dotenv from 'dotenv';
+import license from 'rollup-plugin-license';
 import tailwindcss from 'tailwindcss';
+import checker from 'vite-plugin-checker';
+import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 
-dotenv.config();
+import { objectEntries } from '../src/lib/utils/object';
+import tsConfig from '../tsconfig.json';
 
-const dev = process.env.NODE_ENV === 'dev';
-const port = Number(process.env.PORT ?? 6969);
+const isDev = process.env.ENV === 'dev';
+const port = Number(process.env.APP_PORT ?? 42069);
 
 /**
- * @type {import('postcss').AcceptedPlugin[]}
+ * @type {Record<string, string>}
  */
-const postcssPlugins = [
-  tailwindcss(path.resolve(__dirname, './tailwind.config.cjs')),
-  autoprefixer,
-];
+const aliases = {};
 
-if (!dev) {
-  postcssPlugins.push(cssnano);
-}
+objectEntries(tsConfig.compilerOptions.paths).forEach(([alias, paths]) => {
+  if (alias.startsWith('$') && !alias.endsWith('*') && paths[0]) {
+    aliases[alias] = path.resolve(__dirname, `../${paths[0]}`);
+  }
+});
+
+/**
+ * @type {{
+ *   [K in keyof import('vite-plugin-eslint2').ESLintPluginUserOptions]:
+ *     K extends keyof import('vite-plugin-stylelint').StylelintPluginUserOptions
+ *       ? import('vite-plugin-eslint2').ESLintPluginUserOptions[K]
+ *       : never
+ * } & {
+ *   fix: boolean,
+ *   formatter?: never,
+ * }}
+ */
+const COMMON_ESLINT_AND_STYLELINT_OPTIONS = {
+  build: true,
+  fix: true,
+  chokidar: isDev,
+  lintOnStart: !isDev,
+  emitErrorAsWarning: isDev,
+  emitWarningAsError: !isDev,
+};
+
+const ALLOWED_EXTERNAL_LICENSES = [
+  '0BSD',
+  'ISC',
+  'MIT',
+];
 
 /**
  * @type {import('vite').UserConfig}
  */
 const config = {
+  envPrefix: 'APP_',
   plugins: [
     sveltekit(),
+    checker({
+      typescript: true,
+    }),
     eslint({
-      build: true,
-      fix: true,
-      emitErrorAsWarning: dev,
-      emitWarningAsError: !dev,
+      ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
       overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
     }),
     stylelint({
-      build: true,
-      fix: true,
-      emitErrorAsWarning: dev,
-      emitWarningAsError: !dev,
+      ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
       configFile: path.resolve(__dirname, './stylelint.config.cjs'),
+    }),
+    license({
+      thirdParty: {
+        includePrivate: false,
+        allow: {
+          failOnUnlicensed: true,
+          failOnViolation: true,
+          test: (dependency) => ALLOWED_EXTERNAL_LICENSES.includes(dependency.license ?? ''),
+        },
+        output: {
+          file: path.resolve(__dirname, '../static/licenses.txt'),
+        },
+      },
     }),
   ],
   server: {
@@ -53,13 +90,14 @@ const config = {
     port,
   },
   resolve: {
-    alias: {
-      $scss: path.resolve(__dirname, '../src/scss'),
-    },
+    alias: aliases,
   },
   css: {
     postcss: {
-      plugins: postcssPlugins,
+      plugins: [
+        tailwindcss(path.resolve(__dirname, './tailwind.config.cjs')),
+        autoprefixer,
+      ],
     },
   },
 };
