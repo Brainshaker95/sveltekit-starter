@@ -1,11 +1,11 @@
 <script lang="ts">
+  import { randomInt } from '$lib/utils/number';
   import { counterLocalStore, counterMemoryStore } from '$lib/utils/stores';
 
   import type { SvelteMouseEvent } from '$types/svelte';
 
   const changeText = async ({ currentTarget }: SvelteMouseEvent<HTMLButtonElement>): Promise<void> => {
-    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-    const response = await fetch(`/api/example${Math.random() > 0.5 ? '?fail=1' : ''}`);
+    const response = await fetch(`/api/example${randomInt(0, 1) === 0 ? '?fail=1' : ''}`);
 
     currentTarget.innerText = await response.text();
   };

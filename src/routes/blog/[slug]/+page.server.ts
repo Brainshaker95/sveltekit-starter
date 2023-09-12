@@ -2,6 +2,7 @@ import { error } from '@sveltejs/kit';
 
 import { BLOG_ARTICLES } from '$lib/mocks/blog';
 import { HTTP } from '$lib/utils/http';
+import { randomInt } from '$lib/utils/number';
 
 import type { PageServerLoad } from '$dynamic-types/blog/[slug]/$types';
 import type { BlogArticle } from '$types/blog';
@@ -12,8 +13,7 @@ const DB_FETCH_DURATION = 100;
 const findBySlug = async (slug: string): Promise<BlogArticle | undefined> => new Promise((resolve, reject) => {
   setTimeout(() => {
     // Simulates unexpected errors
-    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-    if (Math.random() < 0.1) {
+    if (randomInt(0, 1) === 0) {
       reject(Error());
     } else {
       resolve(BLOG_ARTICLES.find((blogArticle) => blogArticle.slug === slug));
