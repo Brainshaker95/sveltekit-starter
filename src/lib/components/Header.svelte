@@ -4,7 +4,7 @@
 
 <header class="sticky top-0 border-b border-dark dark:border-light z-40">
   <div class="container mx-auto flex justify-between items-center">
-    <a class="block pl-4" href="/">
+    <a class="block pl-4" data-sveltekit-preload-data href="/">
       SvelteKit Starter
     </a>
 
