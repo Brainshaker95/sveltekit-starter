@@ -3,5 +3,4 @@
 .stylelintcache
 .svelte-kit
 build
-bun.lockb
 node_modules
