@@ -1,12 +1,13 @@
-import { writable, type Writable } from 'svelte/store';
+import { writable } from 'svelte/store';
 
 import { browser } from '$app/environment';
 
-import type { Json } from '$types/core';
+import type { Maybe, StrictJson } from '$types/core';
+import type { Writable } from 'svelte/store';
 
-const memoryStore = <T extends Json>(initial: T): Writable<T> => writable(initial);
+const memoryStore = <T extends StrictJson<T>>(initial?: T): Writable<T> => writable(initial);
 
-const localStore = <T extends Json>(key: string, initial: T): Writable<T> => {
+const localStore = <T extends StrictJson<T>>(key: string, initial?: T): Writable<T> => {
   if (!browser) {
     return memoryStore(initial);
   }
@@ -27,7 +28,7 @@ const localStore = <T extends Json>(key: string, initial: T): Writable<T> => {
       storeLocally(value);
     },
     update: (updater): void => {
-      let value: T | undefined;
+      let value: Maybe<T>;
 
       update((val) => {
         value = updater(val);
@@ -40,5 +41,5 @@ const localStore = <T extends Json>(key: string, initial: T): Writable<T> => {
   };
 };
 
-export const counterMemoryStore = <Writable<number>>memoryStore(0);
-export const counterLocalStore = <Writable<number>>localStore('counter', 0);
+export const counterMemoryStore = memoryStore<number>(0);
+export const counterLocalStore = localStore<number>('counter', 0);
