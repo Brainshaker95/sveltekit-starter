@@ -6,16 +6,11 @@
   export let vertical = false;
   export let items: NavigationItem[];
 
-  $: activeItem = items.find((item) => {
-    if (item.path === '/' && $page.url.pathname === '/') {
-      return true;
-    }
+  $: activeItem = items.find(({ path }) => {
+    const currentPath = $page.url.pathname;
 
-    if (item.path !== '/' && $page.url.pathname.startsWith(item.path)) {
-      return true;
-    }
-
-    return false;
+    return (path === '/' && currentPath === '/')
+      || (path !== '/' && currentPath.startsWith(path));
   });
 </script>
 
