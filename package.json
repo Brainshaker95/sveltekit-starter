@@ -1,6 +1,6 @@
 {
   "name": "sveltekit-starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Opinionated starter template for SvelteKit + Vite + TypeScript + ESLint + SCSS + TailwindCSS + Stylelint",
   "author": "Patrick Rupp",
   "license": "MIT",
