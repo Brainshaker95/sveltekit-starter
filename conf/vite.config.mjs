@@ -12,6 +12,7 @@ import { objectEntries } from '../src/lib/utils/object';
 import tsConfig from '../tsconfig.json';
 
 const isDev = process.env.ENV === 'dev';
+const host = process.env.APP_HOST ?? '127.0.0.1';
 const port = Number(process.env.APP_PORT ?? 42069);
 
 /**
@@ -84,9 +85,11 @@ const config = {
     }),
   ],
   server: {
+    host,
     port,
   },
   preview: {
+    host,
     port,
   },
   resolve: {
