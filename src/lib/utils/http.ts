@@ -3,4 +3,5 @@ export const HTTP = Object.freeze({
   INTERNAL_SERVER_ERROR: 500,
   NOT_FOUND: 404,
   OK: 200,
+  UNPROCESSABLE_ENTITY: 422,
 });
