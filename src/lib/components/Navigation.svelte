@@ -4,7 +4,6 @@
   import type { NavigationItem } from '$types/navigation';
 
   export let vertical = false;
-
   export let items: NavigationItem[];
 
   $: activeItem = items.find((item) => {
