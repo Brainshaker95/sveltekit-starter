@@ -36,7 +36,11 @@ const localStore = <T extends StrictJson<T>>(key: string, initial?: T): Writable
         return value;
       });
 
-      storeLocally(value ?? initial);
+      if (value !== undefined) {
+        storeLocally(value);
+      } else if (initial !== undefined) {
+        storeLocally(initial);
+      }
     },
   };
 };
