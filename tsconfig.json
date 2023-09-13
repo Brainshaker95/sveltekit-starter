@@ -16,7 +16,7 @@
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "moduleDetection": "force",
     "paths": {
       "$app/*": [
