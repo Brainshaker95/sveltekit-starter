@@ -38,11 +38,11 @@ objectEntries(tsConfig.compilerOptions.paths).forEach(([alias, paths]) => {
  * }}
  */
 const COMMON_ESLINT_AND_STYLELINT_OPTIONS = {
-  build: true,
   fix: true,
-  chokidar: isDev,
-  lintOnStart: !isDev,
-  emitErrorAsWarning: isDev,
+  build: true,
+  chokidar: true,
+  lintOnStart: true,
+  lintInWorker: isDev,
   emitWarningAsError: !isDev,
 };
 
