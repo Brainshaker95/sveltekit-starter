@@ -1,10 +1,14 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
+  "include": [
+    "./conf/*.cjs",
+    "./conf/*.mjs",
+    "./src/**/*.ts",
+    "./src/**/*.d.ts",
+    "./src/**/*.svelte",
+    "./svelte.config.js"
+  ],
   "compilerOptions": {
-    "types": [
-      "bun-types",
-      "node"
-    ],
     "noEmit": true,
     "strict": true,
     "allowJs": true,
@@ -18,6 +22,10 @@
     "resolveJsonModule": true,
     "moduleResolution": "Node",
     "moduleDetection": "force",
+    "types": [
+      "bun-types",
+      "node"
+    ],
     "paths": {
       "$app/*": [
         "./.svelte/dev/runtime/app/*",
@@ -48,13 +56,5 @@
         "./src/types/*"
       ]
     }
-  },
-  "include": [
-    "./conf/*.cjs",
-    "./conf/*.mjs",
-    "./src/**/*.ts",
-    "./src/**/*.d.ts",
-    "./src/**/*.svelte",
-    "./svelte.config.js"
-  ]
+  }
 }
