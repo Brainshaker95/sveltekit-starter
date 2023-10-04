@@ -6,11 +6,12 @@ import { randomInt } from '$lib/utils/number';
 
 import type { PageServerLoad } from '$dynamic-types/blog/[slug]/$types';
 import type { BlogArticle } from '$types/blog';
+import type { Maybe } from '$types/core';
 
 // Simulates the time it takes for a real database query
 const DB_FETCH_DURATION = 100;
 
-const findBySlug = async (slug: string): Promise<BlogArticle | undefined> => new Promise((resolve, reject) => {
+const findBySlug = async (slug: string): Promise<Maybe<BlogArticle>> => new Promise((resolve, reject) => {
   setTimeout(() => {
     // Simulates unexpected errors
     if (randomInt(0, 1) === 0) {
@@ -32,7 +33,7 @@ const findBySlug = async (slug: string): Promise<BlogArticle | undefined> => new
  * @see https://kit.svelte.dev/docs/routing#page-page-server-js
  */
 export const load: PageServerLoad<BlogArticle> = async ({ params }) => {
-  let blogArticle: BlogArticle | undefined;
+  let blogArticle: Maybe<BlogArticle>;
 
   try {
     blogArticle = await findBySlug(params.slug);
