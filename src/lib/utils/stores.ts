@@ -2,12 +2,12 @@ import { writable } from 'svelte/store';
 
 import { browser } from '$app/environment';
 
-import type { Maybe, StrictJson } from '$types/core';
+import type { Maybe, Json } from '$types/core';
 import type { Writable } from 'svelte/store';
 
-const memoryStore = <T extends StrictJson<T>>(initial?: T): Writable<T> => writable(initial);
+const memoryStore = <T extends Json<T>>(initial?: T): Writable<T> => writable(initial);
 
-const localStore = <T extends StrictJson<T>>(key: string, initial?: T): Writable<T> => {
+const localStore = <T extends Json<T>>(key: string, initial?: T): Writable<T> => {
   if (!browser) {
     return memoryStore(initial);
   }
