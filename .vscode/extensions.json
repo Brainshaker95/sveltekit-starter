@@ -1,8 +1,8 @@
 {
   "recommendations": [
     "bradlc.vscode-tailwindcss",
-    "EditorConfig.EditorConfig",
     "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
     "stylelint.vscode-stylelint",
     "svelte.svelte-vscode"
   ]
