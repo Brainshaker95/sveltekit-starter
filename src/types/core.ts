@@ -8,6 +8,6 @@ export type MaybeNullish<T> = T | Nullish;
 export type Json<T> = JsonValue<T>;
 export type JsonArray<T> = Json<T>[] | readonly Json<T>[];
 export type JsonObject<T> = { [Key in keyof T]: T[Key] extends NotJsonable ? never : Json<T[Key]> };
-export type JsonValue<T> = JsonPrimitive | JsonObject<T> | JsonArray<T>;
+export type JsonValue<T> = Exclude<JsonPrimitive | JsonObject<T> | JsonArray<T>, undefined>;
 
 export type AllSettled<T> = Promise<PromiseSettledResult<T>[]>;
