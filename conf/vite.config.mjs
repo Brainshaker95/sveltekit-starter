@@ -8,23 +8,9 @@ import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 
-import { objectEntries } from '../src/lib/utils/object';
-import tsConfig from '../tsconfig.json';
-
 const isDev = process.env.ENV === 'dev';
 const host = process.env.APP_HOST ?? '127.0.0.1';
 const port = Number(process.env.APP_PORT ?? 42069);
-
-/**
- * @type {Record<string, string>}
- */
-const aliases = {};
-
-objectEntries(tsConfig.compilerOptions.paths).forEach(([alias, paths]) => {
-  if (alias.startsWith('$') && !alias.endsWith('*') && paths[0]) {
-    aliases[alias] = path.resolve(__dirname, `../${paths[0]}`);
-  }
-});
 
 /**
  * @type {{
@@ -55,17 +41,22 @@ const ALLOWED_EXTERNAL_LICENSES = [
 /**
  * @type {import('vite').UserConfig}
  */
+// @ts-expect-error - currently not working due to vite version mismatch
 const config = {
   envPrefix: 'APP_',
   plugins: [
+    // @ts-expect-error - currently not working due to vite version mismatch
     sveltekit(),
+    // @ts-expect-error - currently not working due to vite version mismatch
     checker({
       typescript: true,
     }),
+    // @ts-expect-error - currently not working due to vite version mismatch
     eslint({
       ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
       overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
     }),
+    // @ts-expect-error - currently not working due to vite version mismatch
     stylelint({
       ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
       configFile: path.resolve(__dirname, './stylelint.config.cjs'),
@@ -92,13 +83,11 @@ const config = {
     host,
     port,
   },
-  resolve: {
-    alias: aliases,
-  },
   css: {
     postcss: {
       plugins: [
         tailwindcss(path.resolve(__dirname, './tailwind.config.cjs')),
+        // @ts-expect-error - currently not working due to vite version mismatch
         autoprefixer,
       ],
     },

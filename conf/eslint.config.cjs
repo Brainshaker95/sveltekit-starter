@@ -1,24 +1,4 @@
-/**
- * @type {typeof import('../tsconfig.json')}
- */
-const tsConfig = require('../tsconfig.json');
-
-/**
- * @type {{
- *   alias: string;
- *   matcher: string;
- * }[]}
- */
-const aliases = [];
-
-Object.entries(tsConfig.compilerOptions.paths).forEach(([alias, paths]) => {
-  if (alias.startsWith('$') && !alias.endsWith('*') && paths[0]) {
-    aliases.push({
-      alias,
-      matcher: alias.replace('$', '^'),
-    });
-  }
-});
+const aliases = require('./aliases.json');
 
 /**
  * @type {import('eslint').Linter.Config}
@@ -40,15 +20,13 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:@dword-design/import-alias/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:@typescript-eslint/strict',
     'plugin:svelte/recommended',
     'airbnb-base',
     'airbnb-typescript/base',
-  ],
-  plugins: [
-    'import-alias',
   ],
   settings: {
     'import/resolver': {
@@ -100,6 +78,13 @@ module.exports = {
         '': 'never',
         js: 'never',
         ts: 'never',
+      },
+    ],
+    '@dword-design/import-alias/prefer-alias': [
+      'error',
+      {
+        alias: aliases,
+        allowSubpathWithAlias: true,
       },
     ],
     'max-len': [
@@ -233,13 +218,6 @@ module.exports = {
     },
   }, {
     files: [
-      './src/routes/**/*.ts',
-    ],
-    rules: {
-      '@typescript-eslint/no-throw-literal': 'off',
-    },
-  }, {
-    files: [
       '*.js',
       '*.cjs',
       '*.mjs',
@@ -257,13 +235,6 @@ module.exports = {
     ],
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'error',
-      'import-alias/import-alias': [
-        'error',
-        {
-          relativeDepth: -1,
-          aliases,
-        },
-      ],
     },
   }, {
     files: [

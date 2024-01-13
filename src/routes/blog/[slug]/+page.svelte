@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PageData } from '$dynamic-types/blog/[slug]/$types';
+  import type { PageData } from './$types';
 
   export let data: PageData;
 </script>

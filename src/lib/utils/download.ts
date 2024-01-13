@@ -1,4 +1,4 @@
-import { objectAssign } from '$lib/utils/object';
+import { objectAssign } from '$utils/object';
 
 export const download = (blob: Blob, fileName: string): void => {
   const url = URL.createObjectURL(blob);

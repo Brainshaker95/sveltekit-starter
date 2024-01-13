@@ -1,7 +1,7 @@
 <script lang="ts">
   import Navigation from '$lib/components/Navigation.svelte';
 
-  import type { LayoutData } from '$dynamic-types/blog/$types';
+  import type { LayoutData } from './$types';
 
   export let data: LayoutData;
 </script>

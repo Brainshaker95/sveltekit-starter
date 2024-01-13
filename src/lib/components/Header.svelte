@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Navigation from '$lib/components/Navigation.svelte';
+  import Navigation from '$components/Navigation.svelte';
 </script>
 
 <header class="sticky top-0 border-b border-dark dark:border-light z-40">
