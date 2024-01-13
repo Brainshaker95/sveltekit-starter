@@ -41,17 +41,22 @@ const ALLOWED_EXTERNAL_LICENSES = [
 /**
  * @type {import('vite').UserConfig}
  */
+// @ts-expect-error - currently not working due to vite version mismatch
 const config = {
   envPrefix: 'APP_',
   plugins: [
+    // @ts-expect-error - currently not working due to vite version mismatch
     sveltekit(),
+    // @ts-expect-error - currently not working due to vite version mismatch
     checker({
       typescript: true,
     }),
+    // @ts-expect-error - currently not working due to vite version mismatch
     eslint({
       ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
       overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
     }),
+    // @ts-expect-error - currently not working due to vite version mismatch
     stylelint({
       ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
       configFile: path.resolve(__dirname, './stylelint.config.cjs'),
@@ -82,6 +87,7 @@ const config = {
     postcss: {
       plugins: [
         tailwindcss(path.resolve(__dirname, './tailwind.config.cjs')),
+        // @ts-expect-error - currently not working due to vite version mismatch
         autoprefixer,
       ],
     },
