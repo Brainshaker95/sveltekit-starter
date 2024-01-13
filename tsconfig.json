@@ -20,41 +20,11 @@
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "types": [
       "bun-types",
       "node"
-    ],
-    "paths": {
-      "$app/*": [
-        "./.svelte/dev/runtime/app/*",
-        "./.svelte/build/runtime/app/*"
-      ],
-      "$dynamic-types": [
-        "./.svelte-kit/types/src/routes/$types"
-      ],
-      "$dynamic-types/*": [
-        "./.svelte-kit/types/src/routes/*"
-      ],
-      "$lib": [
-        "./src/lib"
-      ],
-      "$lib/*": [
-        "./src/lib/*"
-      ],
-      "$scss": [
-        "./src/scss"
-      ],
-      "$scss/*": [
-        "./src/scss/*"
-      ],
-      "$types": [
-        "./src/types"
-      ],
-      "$types/*": [
-        "./src/types/*"
-      ]
-    }
+    ]
   }
 }

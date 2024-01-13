@@ -1,7 +1,7 @@
-import { BLOG_ARTICLES } from '$lib/mocks/blog';
+import { BLOG_ARTICLES } from '$mocks/blog';
 
-import type { LayoutLoad } from '$dynamic-types/blog/$types';
 import type { NavigationItem } from '$types/navigation';
+import type { LayoutLoad } from './$types';
 
 // @see https://kit.svelte.dev/docs/page-options
 // export const prerender = true or false or 'auto'

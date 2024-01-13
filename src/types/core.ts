@@ -2,8 +2,8 @@ import type { JsonPrimitive } from 'type-fest';
 import type { NotJsonable } from 'type-fest/source/jsonify';
 
 export type Maybe<T> = T | undefined;
-export type Nullish = Maybe<null>;
-export type MaybeNullish<T> = T | Nullish;
+export type Nullable<T> = T | null;
+export type Nullish<T> = Maybe<T> | Nullable<T>;
 
 export type Json<T> = JsonValue<T>;
 export type JsonArray<T> = Json<T>[] | readonly Json<T>[];

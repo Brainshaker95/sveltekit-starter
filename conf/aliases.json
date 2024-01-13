@@ -1,0 +1,8 @@
+{
+  "$components": "./src/lib/components",
+  "$lib": "./src/lib",
+  "$mocks": "./src/lib/mocks",
+  "$scss": "./src/scss",
+  "$types": "./src/types",
+  "$utils": "./src/lib/utils"
+}

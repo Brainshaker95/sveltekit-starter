@@ -4,9 +4,9 @@ import { BLOG_ARTICLES } from '$lib/mocks/blog';
 import { HTTP } from '$lib/utils/http';
 import { randomInt } from '$lib/utils/number';
 
-import type { PageServerLoad } from '$dynamic-types/blog/[slug]/$types';
 import type { BlogArticle } from '$types/blog';
 import type { Maybe } from '$types/core';
+import type { PageServerLoad } from './$types';
 
 // Simulates the time it takes for a real database query
 const DB_FETCH_DURATION = 100;
@@ -32,17 +32,17 @@ const findBySlug = async (slug: string): Promise<Maybe<BlogArticle>> => new Prom
  *
  * @see https://kit.svelte.dev/docs/routing#page-page-server-js
  */
-export const load: PageServerLoad<BlogArticle> = async ({ params }) => {
+export const load: PageServerLoad = async ({ params }) => {
   let blogArticle: Maybe<BlogArticle>;
 
   try {
     blogArticle = await findBySlug(params.slug);
   } catch {
-    throw error(HTTP.INTERNAL_SERVER_ERROR, 'Oopsie doopsie');
+    error(HTTP.INTERNAL_SERVER_ERROR, 'Oopsie doopsie');
   }
 
   if (!blogArticle) {
-    throw error(HTTP.NOT_FOUND, 'Article not found');
+    error(HTTP.NOT_FOUND, 'Article not found');
   }
 
   return blogArticle;

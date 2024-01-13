@@ -8,23 +8,9 @@ import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 
-import { objectEntries } from '../src/lib/utils/object';
-import tsConfig from '../tsconfig.json';
-
 const isDev = process.env.ENV === 'dev';
 const host = process.env.APP_HOST ?? '127.0.0.1';
 const port = Number(process.env.APP_PORT ?? 42069);
-
-/**
- * @type {Record<string, string>}
- */
-const aliases = {};
-
-objectEntries(tsConfig.compilerOptions.paths).forEach(([alias, paths]) => {
-  if (alias.startsWith('$') && !alias.endsWith('*') && paths[0]) {
-    aliases[alias] = path.resolve(__dirname, `../${paths[0]}`);
-  }
-});
 
 /**
  * @type {{
@@ -91,9 +77,6 @@ const config = {
   preview: {
     host,
     port,
-  },
-  resolve: {
-    alias: aliases,
   },
   css: {
     postcss: {

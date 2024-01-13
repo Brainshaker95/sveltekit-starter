@@ -1,5 +1,7 @@
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import adapter from 'svelte-adapter-bun';
+
+import aliases from './aliases.json' assert { type: 'json' };
 
 const dev = process.env.ENV === 'dev';
 
@@ -12,6 +14,7 @@ const config = {
     adapter: adapter({
       precompress: !dev,
     }),
+    alias: aliases,
   },
 };
 

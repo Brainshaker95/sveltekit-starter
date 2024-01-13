@@ -1,0 +1,26 @@
+diff --git a/node_modules/@dword-design/eslint-plugin-import-alias/dist/rules/prefer-alias.js b/node_modules/@dword-design/eslint-plugin-import-alias/dist/rules/prefer-alias.js
+index 3c20ddc..66299df 100644
+--- a/node_modules/@dword-design/eslint-plugin-import-alias/dist/rules/prefer-alias.js
++++ b/node_modules/@dword-design/eslint-plugin-import-alias/dist/rules/prefer-alias.js
+@@ -70,7 +70,7 @@ export default {
+           });
+         }
+         const importWithoutAlias = resolvePath(sourcePath, currentFile, options);
+-        if (!(_importWithoutAlias = importWithoutAlias, isParentImport(_importWithoutAlias)) && hasAlias) {
++        if (!(_importWithoutAlias = importWithoutAlias, isParentImport(_importWithoutAlias)) && hasAlias && !options.allowSubpathWithAlias) {
+           return context.report({
+             fix: fixer => fixer.replaceTextRange([node.source.range[0] + 1, node.source.range[1] - 1], importWithoutAlias),
+             message: `Unexpected subpath import via alias '${sourcePath}'. Use '${importWithoutAlias}' instead`,
+@@ -88,7 +88,11 @@ export default {
+       properties: {
+         alias: {
+           type: 'object'
+-        }
++        },
++        allowSubpathWithAlias: {
++          default: false,
++          type: 'boolean',
++        },
+       },
+       type: 'object'
+     }],
