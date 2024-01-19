@@ -13,7 +13,7 @@ module.exports = {
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 'latest',
-    project: './conf/tsconfig.eslint.json',
+    project: './tsconfig.json',
     extraFileExtensions: [
       '.svelte',
     ],
@@ -215,17 +215,6 @@ module.exports = {
     ],
     rules: {
       'no-console': 'off',
-    },
-  }, {
-    files: [
-      '*.js',
-      '*.cjs',
-      '*.mjs',
-      '*.ts',
-      '*.d.ts',
-    ],
-    parserOptions: {
-      project: './conf/tsconfig.eslint.json',
     },
   }, {
     files: [
