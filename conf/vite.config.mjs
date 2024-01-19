@@ -1,4 +1,5 @@
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { sveltekit } from '@sveltejs/kit/vite';
 import autoprefixer from 'autoprefixer';
@@ -11,6 +12,7 @@ import stylelint from 'vite-plugin-stylelint';
 const isDev = process.env.ENV === 'dev';
 const host = process.env.APP_HOST ?? '127.0.0.1';
 const port = Number(process.env.APP_PORT ?? 42069);
+const dirname = fileURLToPath(new URL('.', import.meta.url));
 
 /**
  * @type {{
@@ -50,11 +52,11 @@ const config = {
     }),
     eslint({
       ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
-      overrideConfigFile: path.resolve(__dirname, './eslint.config.cjs'),
+      overrideConfigFile: path.resolve(dirname, './eslint.config.cjs'),
     }),
     stylelint({
       ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
-      configFile: path.resolve(__dirname, './stylelint.config.cjs'),
+      configFile: path.resolve(dirname, './stylelint.config.cjs'),
     }),
     license({
       thirdParty: {
@@ -65,7 +67,7 @@ const config = {
           test: (dependency) => ALLOWED_EXTERNAL_LICENSES.includes(dependency.license ?? ''),
         },
         output: {
-          file: path.resolve(__dirname, '../static/licenses.txt'),
+          file: path.resolve(dirname, '../static/licenses.txt'),
         },
       },
     }),
@@ -81,7 +83,7 @@ const config = {
   css: {
     postcss: {
       plugins: [
-        tailwindcss(path.resolve(__dirname, './tailwind.config.cjs')),
+        tailwindcss(path.resolve(dirname, './tailwind.config.cjs')),
         autoprefixer,
       ],
     },
