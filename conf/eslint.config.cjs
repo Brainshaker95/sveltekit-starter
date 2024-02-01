@@ -25,6 +25,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:@typescript-eslint/strict',
     'plugin:svelte/recommended',
+    'plugin:unicorn/recommended',
     'airbnb-base',
     'airbnb-typescript/base',
   ],
@@ -53,6 +54,26 @@ module.exports = {
     '@typescript-eslint/promise-function-async': 'error',
     'import/no-default-export': 'error',
     'import/prefer-default-export': 'off',
+    'unicorn/consistent-destructuring': 'error',
+    'unicorn/custom-error-definition': 'error',
+    'unicorn/no-nested-ternay': 'off',
+    'no-nested-ternary': 'error',
+    'unicorn/no-unused-properties': 'error',
+    'array-callback-return': [
+      'error',
+      {
+        allowImplicit: true,
+      },
+    ],
+    'unicorn/prefer-switch': 'off',
+    'unicorn/string-content': [
+      'error',
+      {
+        patterns: {
+          '^http:\\/\\/': '^https:\\/\\/',
+        },
+      },
+    ],
     '@typescript-eslint/consistent-type-assertions': [
       'error',
       {
@@ -67,7 +88,7 @@ module.exports = {
           0,
           1,
           100,
-          42069,
+          42_069,
         ],
       },
     ],
@@ -206,6 +227,18 @@ module.exports = {
         'error',
         {
           singleline: 3,
+        },
+      ],
+    },
+  }, {
+    files: [
+      './src/lib/components/*.svelte',
+    ],
+    rules: {
+      'unicorn/filename-case': [
+        'error',
+        {
+          case: 'pascalCase',
         },
       ],
     },

@@ -7,7 +7,7 @@
   const changeText = async ({ currentTarget }: SvelteMouseEvent<HTMLButtonElement>): Promise<void> => {
     const response = await fetch(`/api/example${randomInt(0, 1) === 0 ? '?fail=1' : ''}`);
 
-    currentTarget.innerText = await response.text();
+    currentTarget.textContent = await response.text();
   };
 
   let counter = 0;

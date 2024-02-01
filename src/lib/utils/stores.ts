@@ -30,8 +30,8 @@ const localStore = <T extends Json<T>>(key: string, initial?: T): Writable<T> =>
     update: (updater): void => {
       let value: Maybe<T>;
 
-      update((val) => {
-        value = updater(val);
+      update((innerValue) => {
+        value = updater(innerValue);
 
         return value;
       });

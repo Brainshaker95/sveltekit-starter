@@ -15,7 +15,7 @@ const findBySlug = async (slug: string): Promise<Maybe<BlogArticle>> => new Prom
   setTimeout(() => {
     // Simulates unexpected errors
     if (randomInt(0, 1) === 0) {
-      reject(Error());
+      reject(new Error('An unexpected error occured'));
     } else {
       resolve(BLOG_ARTICLES.find((blogArticle) => blogArticle.slug === slug));
     }

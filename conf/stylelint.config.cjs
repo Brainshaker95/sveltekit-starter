@@ -16,7 +16,7 @@ module.exports = {
     'function-name-case': 'lower',
     'function-url-quotes': 'always',
     'import-notation': 'string',
-    'keyframes-name-pattern': /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/,
+    'keyframes-name-pattern': /^([a-z][\da-z]*)(-[\da-z]+)*$/,
     'keyframe-selector-notation': 'percentage-unless-within-keyword-only-block',
     'shorthand-property-no-redundant-values': true,
     'selector-attribute-quotes': 'always',

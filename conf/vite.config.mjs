@@ -1,5 +1,5 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { sveltekit } from '@sveltejs/kit/vite';
 import autoprefixer from 'autoprefixer';
@@ -9,9 +9,9 @@ import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 
-const isDev = process.env.ENV === 'dev';
+const isDevelopment = process.env.ENV === 'dev';
 const host = process.env.APP_HOST ?? '127.0.0.1';
-const port = Number(process.env.APP_PORT ?? 42069);
+const port = Number(process.env.APP_PORT ?? 42_069);
 const dirname = fileURLToPath(new URL('.', import.meta.url));
 
 /**
@@ -30,15 +30,15 @@ const COMMON_ESLINT_AND_STYLELINT_OPTIONS = {
   build: true,
   chokidar: true,
   lintOnStart: true,
-  lintInWorker: isDev,
-  emitWarningAsError: !isDev,
+  lintInWorker: isDevelopment,
+  emitWarningAsError: !isDevelopment,
 };
 
-const ALLOWED_EXTERNAL_LICENSES = [
+const ALLOWED_EXTERNAL_LICENSES = new Set([
   '0BSD',
   'ISC',
   'MIT',
-];
+]);
 
 /**
  * @type {import('vite').UserConfig}
@@ -64,7 +64,7 @@ const config = {
         allow: {
           failOnUnlicensed: true,
           failOnViolation: true,
-          test: (dependency) => ALLOWED_EXTERNAL_LICENSES.includes(dependency.license ?? ''),
+          test: (dependency) => ALLOWED_EXTERNAL_LICENSES.has(dependency.license ?? ''),
         },
         output: {
           file: path.resolve(dirname, '../static/licenses.txt'),
