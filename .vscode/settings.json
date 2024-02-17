@@ -10,9 +10,6 @@
     "javascript",
     "svelte"
   ],
-  "search.exclude": {
-    "yarn.lock": true
-  },
   "stylelint.configFile": "./conf/stylelint.config.cjs",
   "stylelint.validate": [
     "css",
