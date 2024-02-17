@@ -3,7 +3,7 @@
 
   // import { browser } from '$app/environment';
 
-  import Header from '$lib/components/Header.svelte';
+  import Header from '$components/Header.svelte';
 
   import '$scss/global.scss';
 

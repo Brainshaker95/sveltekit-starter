@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { randomInt } from '$lib/utils/number';
-  import { counterLocalStore, counterMemoryStore } from '$lib/utils/stores';
+  import { randomInt } from '$utils/number';
+  import { counterLocalStore, counterMemoryStore } from '$utils/stores';
 
   import type { SvelteMouseEvent } from '$types/svelte';
 

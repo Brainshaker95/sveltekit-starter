@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit';
 
-import { BLOG_ARTICLES } from '$lib/mocks/blog';
-import { HTTP } from '$lib/utils/http';
-import { randomInt } from '$lib/utils/number';
+import { BLOG_ARTICLES } from '$mocks/blog';
+import { HTTP } from '$utils/http';
+import { randomInt } from '$utils/number';
 
 import type { BlogArticle } from '$types/blog';
 import type { Maybe } from '$types/core';

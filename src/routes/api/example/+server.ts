@@ -1,4 +1,4 @@
-import { HTTP } from '$lib/utils/http';
+import { HTTP } from '$utils/http';
 
 import type { RequestHandler } from '@sveltejs/kit';
 
