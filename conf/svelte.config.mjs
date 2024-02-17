@@ -3,7 +3,7 @@ import adapter from 'svelte-adapter-bun';
 
 import aliases from './aliases.json' assert { type: 'json' };
 
-const isDevelopment = process.env.ENV === 'dev';
+const isDevelopment = process.env['ENV'] === 'dev';
 
 /**
  * @type {import('@sveltejs/kit').Config}

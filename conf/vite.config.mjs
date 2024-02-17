@@ -9,9 +9,9 @@ import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 
-const isDevelopment = process.env.ENV === 'dev';
-const host = process.env.APP_HOST ?? '127.0.0.1';
-const port = Number(process.env.APP_PORT ?? 42_069);
+const isDevelopment = process.env['ENV'] === 'dev';
+const host = process.env['APP_HOST'] ?? '127.0.0.1';
+const port = Number(process.env['APP_PORT'] ?? 42_069);
 const dirname = fileURLToPath(new URL('.', import.meta.url));
 
 /**
