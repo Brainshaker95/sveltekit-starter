@@ -7,9 +7,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "ENV=dev vite dev --config ./conf/vite.config.mjs",
-    "build": "ENV=prod vite build --config ./conf/vite.config.mjs",
-    "preview": "ENV=prod vite preview --config ./conf/vite.config.mjs",
+    "dev": "ENV=dev vite dev --config ./conf/vite.config.ts",
+    "build": "ENV=prod vite build --config ./conf/vite.config.ts",
+    "preview": "ENV=prod vite preview --config ./conf/vite.config.ts",
     "check": "bun --bun tsc && bun --bun svelte-kit sync && svelte-check",
     "lint": "bun --bun lint:js && bun --bun lint:css",
     "lint:css": "bun --bun stylelint ./src/**/*.{css,scss,html,svelte} --config ./conf/stylelint.config.cjs --fix",

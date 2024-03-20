@@ -12,6 +12,8 @@ import stylelint from 'vite-plugin-stylelint';
 import stylelintConfig from './stylelint.config.mjs';
 import tailwindConfig from './tailwind.config.mjs';
 
+import type { UserConfig } from 'vite';
+
 const isDevelopment = process.env['ENV'] === 'dev';
 const host = process.env['APP_HOST'] ?? '127.0.0.1';
 const port = Number(process.env['APP_PORT'] ?? 42_069);
@@ -43,10 +45,7 @@ const ALLOWED_EXTERNAL_LICENSES = new Set([
   'MIT',
 ]);
 
-/**
- * @type {import('vite').UserConfig}
- */
-const config = {
+const config = <const>{
   envPrefix: 'APP_',
   plugins: [
     sveltekit(),
@@ -91,6 +90,6 @@ const config = {
       ],
     },
   },
-};
+} satisfies UserConfig;
 
 export default config;

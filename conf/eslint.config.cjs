@@ -285,10 +285,12 @@ module.exports = {
   }, {
     files: [
       'svelte.config.js',
-      './conf/**/*.mjs',
+      './conf/*.mjs',
+      './conf/*.ts',
     ],
     rules: {
       'import/no-default-export': 'off',
+      'import/prefer-default-export': 'error',
     },
   }, {
     files: [

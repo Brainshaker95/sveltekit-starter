@@ -7,7 +7,8 @@
     %sveltekit.head%
   </head>
 
-  <body class="flex flex-col min-h-screen text-dark dark:text-light antialiased bg-light dark:bg-dark">
+  <!-- @see: https://kit.svelte.dev/docs/link-options -->
+  <body data-sveltekit-preload-data="hover" class="flex flex-col min-h-screen text-dark dark:text-light antialiased bg-light dark:bg-dark">
     <div class="contents">
       %sveltekit.body%
     </div>

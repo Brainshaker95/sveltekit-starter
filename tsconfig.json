@@ -4,6 +4,7 @@
   "include": [
     "./conf/*.cjs",
     "./conf/*.mjs",
+    "./conf/*.ts",
     "./src/**/*.ts",
     "./src/**/*.d.ts",
     "./src/**/*.svelte",
@@ -11,7 +12,6 @@
   ],
   "compilerOptions": {
     "moduleResolution": "Bundler",
-    "moduleDetection": "force",
     "types": [
       "bun-types",
       "node",
