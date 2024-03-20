@@ -31,7 +31,6 @@
     "noImplicitOverride": true,
     "allowUnreachableCode": false,
     "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "noPropertyAccessFromIndexSignature": true
