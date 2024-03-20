@@ -14,7 +14,10 @@ const config = {
     adapter: adapter({
       precompress: !isDevelopment,
     }),
-    alias: aliases,
+    alias: {
+      ...aliases,
+      postcss: './node_modules/postcss',
+    },
   },
 };
 

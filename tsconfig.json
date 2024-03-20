@@ -14,7 +14,7 @@
     "moduleDetection": "force",
     "types": [
       "bun-types",
-      "node"
+      "node",
     ],
     "noEmit": true,
     "strict": true,
