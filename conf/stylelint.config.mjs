@@ -1,7 +1,7 @@
 /**
  * @type {import('stylelint').Config}
  */
-module.exports = {
+const config = {
   extends: 'stylelint-config-recommended-scss',
   plugins: [
     'stylelint-scss',
@@ -72,3 +72,5 @@ module.exports = {
     customSyntax: 'postcss-html',
   }],
 };
+
+export default config;

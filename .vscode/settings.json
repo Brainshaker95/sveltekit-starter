@@ -10,12 +10,12 @@
     "javascript",
     "svelte"
   ],
-  "stylelint.configFile": "./conf/stylelint.config.cjs",
+  "stylelint.configFile": "./conf/stylelint.config.mjs",
   "stylelint.validate": [
     "css",
     "scss"
   ],
-  "tailwindCSS.experimental.configFile": "./conf/tailwind.config.cjs",
+  "tailwindCSS.experimental.configFile": "./conf/tailwind.config.mjs",
   "tailwindCSS.emmetCompletions": true,
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "typescript.tsdk": "node_modules/typescript/lib",

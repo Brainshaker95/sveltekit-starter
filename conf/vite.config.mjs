@@ -9,6 +9,9 @@ import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 
+import stylelintConfig from './stylelint.config.mjs';
+import tailwindConfig from './tailwind.config.mjs';
+
 const isDevelopment = process.env['ENV'] === 'dev';
 const host = process.env['APP_HOST'] ?? '127.0.0.1';
 const port = Number(process.env['APP_PORT'] ?? 42_069);
@@ -56,7 +59,7 @@ const config = {
     }),
     stylelint({
       ...COMMON_ESLINT_AND_STYLELINT_OPTIONS,
-      configFile: path.resolve(dirname, './stylelint.config.cjs'),
+      config: stylelintConfig,
     }),
     license({
       thirdParty: {
@@ -83,7 +86,7 @@ const config = {
   css: {
     postcss: {
       plugins: [
-        tailwindcss(path.resolve(dirname, './tailwind.config.cjs')),
+        tailwindcss(tailwindConfig),
         autoprefixer,
       ],
     },
