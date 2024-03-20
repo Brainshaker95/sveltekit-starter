@@ -12,7 +12,7 @@
     "preview": "ENV=prod vite preview --config ./conf/vite.config.ts",
     "check": "bun --bun tsc && bun --bun svelte-kit sync && svelte-check",
     "lint": "bun --bun lint:js && bun --bun lint:css",
-    "lint:css": "bun --bun stylelint ./src/**/*.{css,scss,html,svelte} --config ./conf/stylelint.config.cjs --fix",
+    "lint:css": "bun --bun stylelint ./src/**/*.{css,scss,html,svelte} --config ./conf/stylelint.config.mjs --fix",
     "lint:js": "bun --bun eslint . --config ./conf/eslint.config.cjs --ignore-path .gitignore --fix",
     "postinstall": "bun --bun patch-package"
   },
