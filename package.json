@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "sveltekit-starter",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Opinionated starter template for SvelteKit + Vite + TypeScript + ESLint + SCSS + TailwindCSS + Stylelint",
   "author": "Patrick Rupp",
   "license": "MIT",
