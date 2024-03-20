@@ -12,10 +12,6 @@
   ],
   "compilerOptions": {
     "moduleResolution": "Bundler",
-    "types": [
-      "bun-types",
-      "node",
-    ],
     "noEmit": true,
     "strict": true,
     "allowJs": true,
