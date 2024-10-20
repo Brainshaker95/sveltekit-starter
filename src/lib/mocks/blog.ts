@@ -1,6 +1,6 @@
 import type { BlogArticle } from '$types/blog';
 
-export const BLOG_ARTICLES: Readonly<Readonly<BlogArticle>[]> = [{
+export const BLOG_ARTICLES: readonly Readonly<BlogArticle>[] = [{
   slug: 'my-first-article',
   title: 'My first article',
   text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',

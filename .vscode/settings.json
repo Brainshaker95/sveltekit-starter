@@ -3,6 +3,7 @@
     ".vscode/css-custom-data.json"
   ],
   "css.lint.unknownAtRules": "ignore",
+  "eslint.useFlatConfig": false,
   "eslint.options": {
     "overrideConfigFile": "./conf/eslint.config.cjs"
   },

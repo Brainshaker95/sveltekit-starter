@@ -1,8 +1,8 @@
 Name: @sveltejs/kit
-Version: 2.5.0
+Version: 2.7.2
 License: MIT
 Private: false
-Description: The fastest way to build Svelte apps
+Description: SvelteKit is the fastest way to build Svelte apps
 Repository: https://github.com/sveltejs/kit
 Homepage: https://kit.svelte.dev
 License Copyright:
@@ -19,7 +19,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ---
 
 Name: svelte
-Version: 4.2.11
+Version: 4.2.19
 License: MIT
 Private: false
 Description: Cybernetically enhanced web apps
@@ -40,7 +40,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ---
 
 Name: devalue
-Version: 4.3.2
+Version: 5.1.1
 License: MIT
 Private: false
 Description: Gets the job done when JSON.stringify can't
