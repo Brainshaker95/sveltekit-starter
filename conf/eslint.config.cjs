@@ -72,7 +72,7 @@ module.exports = {
       'error',
       {
         patterns: {
-          '^http:\\/\\/': '^https:\\/\\/',
+          '^http:\\/\\/': String.raw`^https:\/\/`,
         },
       },
     ],
@@ -230,7 +230,7 @@ module.exports = {
         'error',
         {
           code: 120,
-          ignorePattern: '^\\s*<.+>$|^\\s*<.+/>$|^.+=".+"$',
+          ignorePattern: String.raw`^\s*<.+>$|^\s*<.+/>$|^.+=".+"$`,
         },
       ],
       'svelte/html-closing-bracket-spacing': [
@@ -291,6 +291,7 @@ module.exports = {
     rules: {
       'import/no-default-export': 'off',
       'import/prefer-default-export': 'error',
+      '@dword-design/import-alias/prefer-alias': 'off',
     },
   }, {
     files: [
