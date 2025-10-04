@@ -1,7 +1,7 @@
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import adapter from 'svelte-adapter-bun';
 
-import aliases from './aliases.json' assert { type: 'json' };
+import aliases from './aliases.json' with { type: 'json' };
 
 const isDevelopment = process.env['ENV'] === 'dev';
 
